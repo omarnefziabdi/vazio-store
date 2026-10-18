@@ -251,9 +251,28 @@ footer span { color: var(--yellow); }
         <option value="Bleu">Bleu</option>
       </select>
 
-      <button class="order-button" id="orderBtn">
-        Commander sur WhatsApp
-      </button>
+     
+<div class="order-form">
+  <label class="field-label" for="customerName">Nom complet :</label>
+  <input id="customerName" type="text" placeholder="Votre nom complet" required>
+
+  <label class="field-label" for="customerPhone">Téléphone :</label>
+  <input id="customerPhone" type="tel" placeholder="Votre numéro de téléphone" required>
+
+  <label class="field-label" for="customerAddress">Adresse :</label>
+  <input id="customerAddress" type="text" placeholder="Ex. : Abatta" required>
+
+  <label class="field-label" for="payment">Mode de paiement :</label>
+  <select id="payment">
+    <option value="Mobile Money">Mobile Money</option>
+    <option value="Paiement à la livraison">Paiement à la livraison</option>
+  </select>
+
+  <button class="order-button" id="orderBtn" type="button">
+    Confirmer ma commande sur WhatsApp
+  </button>
+</div>
+
 
       <div class="delivery">
         <div>✓ Commande simple par WhatsApp</div>
@@ -354,19 +373,37 @@ mainPhoto.addEventListener("error", () => {
 });
 
 // Commande WhatsApp
+
 document.getElementById("orderBtn").addEventListener("click", () => {
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+  const payment = document.getElementById("payment").value;
   const color = document.getElementById("color").value;
+
+  if (!name || !phone || !address) {
+    alert("Veuillez remplir votre nom, téléphone et adresse.");
+    return;
+  }
+
   const message =
-    "Bonjour VAZIO ! Je souhaite commander :\n" +
-    "Produit : Support de téléphone pliable\n" +
+    "Bonjour VAZIO ! Je souhaite commander :\n\n" +
+    "Produit : Support téléphone pliable\n" +
     "Prix : 1 500 FCFA\n" +
     "Couleur : " + color + "\n" +
-    "Merci de me confirmer la disponibilité et les modalités de livraison.";
+    "Nom : " + name + "\n" +
+    "Téléphone : " + phone + "\n" +
+    "Adresse : " + address + "\n" +
+    "Paiement : " + payment + "\n\n" +
+    "Merci de confirmer ma commande.";
 
   const whatsappURL =
-    "https://wa.me/2250777848470?text=" + encodeURIComponent(message);
+    "https://wa.me/2250777848470?text=" +
+    encodeURIComponent(message);
 
-  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+  window.open(whatsappURL, "_blank");
+});
+
 });
 </script>
 </body>
