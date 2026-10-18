@@ -4,206 +4,371 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
 <title>VAZIO | Boutique en ligne</title>
-<meta name="description" content="VAZIO, votre boutique en ligne à Abidjan. Commandez facilement sur WhatsApp.">
 <style>
-:root{--yellow:#ffd32a;--black:#171717;--gray:#f5f5f5}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:var(--black);background:#fff}
-header{background:var(--black);color:white;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.logo{font-size:30px;font-weight:900;letter-spacing:3px;color:var(--yellow)}
-header a{color:white;text-decoration:none}
-.hero{padding:55px 6%;background:linear-gradient(120deg,#fff4bd,#fff);text-align:center}
-.hero h1{font-size:clamp(30px,5vw,52px);margin:0 0 14px}
-.hero p{font-size:17px;color:#555}
-.button{display:inline-block;border:0;border-radius:9px;background:var(--yellow);color:#171717;padding:14px 20px;font-weight:bold;text-decoration:none;cursor:pointer}
-main{max-width:1100px;margin:auto;padding:35px 18px}
-.section-title{font-size:27px;margin-bottom:20px}
-.product{display:grid;grid-template-columns:1fr 1fr;gap:28px;border:1px solid #eee;border-radius:16px;padding:20px}
-.gallery{min-width:0}
-.photo{height:330px;background:linear-gradient(145deg,#eee,#fafafa);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:contain}
-.photo .placeholder{font-size:70px}
-.thumbnails{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
-.thumb{width:65px;height:60px;flex-shrink:0;border:2px solid #ddd;border-radius:8px;overflow:hidden;cursor:pointer;background:#f4f4f4;display:flex;align-items:center;justify-content:center}
-.thumb.active{border-color:#e0b600}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.details h2{margin-top:5px;font-size:28px}
-.price{font-size:27px;font-weight:bold;margin:15px 0}
-.muted{color:#666;line-height:1.6}
-label{display:block;font-weight:bold;margin:18px 0 8px}
-select,input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:16px;background:white}
-.order{width:100%;margin-top:18px;background:#20bd5a;color:white;font-size:16px}
-.notice{margin-top:15px;background:#f7f7f7;padding:14px;border-radius:10px;font-size:14px;line-height:1.6}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px}
-.feature{padding:20px 12px;text-align:center;background:var(--gray);border-radius:12px}
-footer{margin-top:35px;background:var(--black);color:#ddd;text-align:center;padding:28px 15px;line-height:1.8}
-@media(max-width:650px){
- .product{grid-template-columns:1fr;padding:13px}
- .photo{height:280px}
- .features{grid-template-columns:1fr}
- header{justify-content:center;text-align:center}
+:root {
+  --black: #111111;
+  --yellow: #ffd21f;
+  --white: #ffffff;
+  --gray: #f5f5f5;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--black);
+  background: var(--white);
+}
+button, select { font: inherit; }
+button { cursor: pointer; }
+header {
+  background: var(--black);
+  color: var(--white);
+  padding: 17px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.logo span { color: var(--yellow); }
+.header-text { font-size: 13px; color: #ddd; }
+.hero {
+  background: linear-gradient(120deg, #111 0%, #292929 100%);
+  color: white;
+  text-align: center;
+  padding: 42px 20px;
+}
+.hero h1 { margin: 0 0 12px; font-size: clamp(27px, 5vw, 42px); }
+.hero h1 span { color: var(--yellow); }
+.hero p { margin: 0; color: #ddd; line-height: 1.6; }
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 35px 18px 50px;
+}
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 35px;
+  align-items: start;
+}
+.gallery { min-width: 0; }
+.main-photo-wrap {
+  position: relative;
+  background: var(--gray);
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+#mainPhoto {
+  display: block;
+  width: 100%;
+  height: 390px;
+  object-fit: contain;
+  padding: 15px;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(17,17,17,.82);
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 25px;
+  z-index: 2;
+}
+.arrow:hover { background: #000; }
+.arrow.prev { left: 12px; }
+.arrow.next { right: 12px; }
+.photo-count {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0,0,0,.7);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+}
+.thumb {
+  flex: 0 0 75px;
+  height: 72px;
+  border: 2px solid #ddd;
+  border-radius: 9px;
+  padding: 3px;
+  background: white;
+}
+.thumb.active { border-color: var(--yellow); }
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.details h2 { margin: 0 0 12px; font-size: 28px; }
+.description { color: #555; line-height: 1.7; }
+.price {
+  font-size: 32px;
+  font-weight: 900;
+  margin: 20px 0;
+}
+.price small { font-size: 14px; font-weight: 600; }
+.tag {
+  display: inline-block;
+  background: #fff3b8;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.field-label {
+  display: block;
+  font-weight: bold;
+  margin: 22px 0 10px;
+}
+select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  background: white;
+}
+.order-button {
+  display: block;
+  width: 100%;
+  margin-top: 22px;
+  border: none;
+  border-radius: 10px;
+  background: var(--yellow);
+  color: #111;
+  padding: 16px;
+  font-weight: 900;
+  font-size: 16px;
+}
+.order-button:hover { background: #f0c000; }
+.delivery {
+  margin-top: 17px;
+  background: var(--gray);
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 38px;
+}
+.benefit {
+  text-align: center;
+  background: var(--gray);
+  border-radius: 12px;
+  padding: 18px 10px;
+}
+.benefit strong { display: block; margin-bottom: 7px; }
+.benefit p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
+footer {
+  text-align: center;
+  padding: 24px 15px;
+  background: var(--black);
+  color: white;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer span { color: var(--yellow); }
+@media (max-width: 700px) {
+  header { padding: 15px 18px; }
+  .logo { font-size: 25px; }
+  .header-text { font-size: 11px; text-align: right; }
+  .hero { padding: 32px 16px; }
+  main { padding: 25px 15px 35px; }
+  .product { grid-template-columns: 1fr; gap: 25px; }
+  #mainPhoto { height: min(82vw, 360px); }
+  .details h2 { font-size: 25px; }
+  .benefits { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
+
 <header>
-  <div class="logo">VAZIO</div>
-  <div>Votre boutique en ligne à Abidjan</div>
-  <a href="#produit">Nos produits</a>
+  <div class="logo">VA<span>Z</span>IO</div>
+  <div class="header-text">Votre boutique en ligne<br>Abidjan, Côte d’Ivoire</div>
 </header>
 
 <section class="hero">
-  <h1>Bienvenue chez VAZIO</h1>
-  <p>Des produits pratiques au meilleur prix.</p>
-  <a class="button" href="#produit">Découvrir le produit</a>
+  <h1>Simple. Pratique. <span>VAZIO.</span></h1>
+  <p>Découvrez nos accessoires pratiques à petits prix.</p>
 </section>
 
-<main id="produit">
-  <h2 class="section-title">Notre produit</h2>
-
+<main>
   <section class="product">
     <div class="gallery">
-      <div class="photo" id="mainPhoto">
-        <div class="placeholder">📱</div>
+      <div class="main-photo-wrap" id="photoArea">
+        <img id="mainPhoto" src="./Image%20ChatGPT%2018%20oct.%202026,%2002_06_37.webp"
+             alt="Support de téléphone VAZIO">
+        <button class="arrow prev" id="prevBtn" aria-label="Photo précédente">‹</button>
+        <button class="arrow next" id="nextBtn" aria-label="Photo suivante">›</button>
+        <div class="photo-count" id="photoCount">1 / 3</div>
       </div>
       <div class="thumbnails" id="thumbnails"></div>
-      <p class="muted" style="font-size:13px">Ajoutez vos photos du produit dans le code pour les afficher ici.</p>
     </div>
 
     <div class="details">
-      <h2>Support téléphone pliable</h2>
-      <p class="muted">Un support compact et pratique, imprimé en 3D. Facile à transporter et idéal pour regarder des vidéos ou utiliser votre téléphone.</p>
-      <div class="price">1 500 FCFA</div>
+      <span class="tag">ACCESSOIRE PRATIQUE</span>
+      <h2>Support de téléphone pliable</h2>
+      <p class="description">
+        Un support compact et pratique pour votre téléphone.
+        Facile à transporter et idéal pour regarder des vidéos,
+        travailler ou passer des appels.
+      </p>
 
-      <label for="color">Choisissez votre couleur</label>
+      <div class="price">1 500 <small>FCFA</small></div>
+
+      <label class="field-label" for="color">Choisissez votre couleur :</label>
       <select id="color">
-        <option>Noir</option>
-        <option>Rouge</option>
-        <option>Orange</option>
-        <option>Blanc</option>
-        <option>Bleu</option>
+        <option value="Noir">Noir</option>
+        <option value="Rouge">Rouge</option>
+        <option value="Orange">Orange</option>
+        <option value="Blanc">Blanc</option>
+        <option value="Bleu">Bleu</option>
       </select>
 
-      <label for="customer">Votre nom</label>
-      <input id="customer" placeholder="Entrez votre nom" autocomplete="name">
+      <button class="order-button" id="orderBtn">
+        Commander sur WhatsApp
+      </button>
 
-      <label for="phone">Votre numéro de téléphone</label>
-      <input id="phone" type="tel" placeholder="Ex. 07 00 00 00 00" autocomplete="tel">
-
-      <label for="address">Adresse de livraison à Abidjan</label>
-      <input id="address" placeholder="Commune, quartier, repère">
-
-      <label for="payment">Mode de paiement</label>
-      <select id="payment">
-        <option> Paiement à la livraison (COD)</option>
-        <option>Mobile Money</option>
-      </select>
-
-      <button class="button order" onclick="orderWhatsApp()">Commander sur WhatsApp</button>
-
-      <div class="notice">
-        ✓ Commande simple sur WhatsApp<br>
-        ✓ Paiement à la livraison ou Mobile Money<br>
-        ✓ Confirmation de la commande avant livraison
+      <div class="delivery">
+        <div>✓ Commande simple par WhatsApp</div>
+        <div>✓ Paiement à la livraison ou Mobile Money à convenir</div>
+        <div>✓ Contact direct avec VAZIO</div>
       </div>
     </div>
   </section>
 
-  <section class="features">
-    <div class="feature">🚚<br><strong>Livraison</strong><br>À Abidjan</div>
-    <div class="feature">💳<br><strong>Paiement flexible</strong><br>COD ou Mobile Money</div>
-    <div class="feature">💬<br><strong>Commande facile</strong><br>Directement sur WhatsApp</div>
+  <section class="benefits">
+    <div class="benefit">
+      <strong>📱 Pratique</strong>
+      <p>Pour vos vidéos et appels.</p>
+    </div>
+    <div class="benefit">
+      <strong>🎒 Compact</strong>
+      <p>Facile à transporter.</p>
+    </div>
+    <div class="benefit">
+      <strong>💬 Commande facile</strong>
+      <p>Contactez-nous sur WhatsApp.</p>
+    </div>
   </section>
 </main>
 
 <footer>
-  <div class="logo">VAZIO</div>
-  Votre boutique en ligne à Abidjan.<br>
-  © <span id="year"></span> VAZIO — Tous droits réservés.
+  <strong>VA<span>Z</span>IO</strong><br>
+  Votre boutique en ligne à Abidjan<br>
+  © 2026 VAZIO — Tous droits réservés
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/*
-  Pour ajouter vos photos :
-  1. Téléversez les images dans le dépôt GitHub.
-  2. Remplacez les exemples ci-dessous par les chemins exacts,
-     par exemple "images/produit-1.jpg".
-*/
 const productPhotos = [
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_37.webp",
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_44.webp",
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_49.jpg"
 ];
-];
+
+let currentPhoto = 0;
 
 const mainPhoto = document.getElementById("mainPhoto");
+const photoCount = document.getElementById("photoCount");
 const thumbnails = document.getElementById("thumbnails");
 
 function showPhoto(index) {
-  const path = productPhotos[index];
-  if (!path) return;
-  mainPhoto.innerHTML = "";
-  const img = document.createElement("img");
-  img.src = path;
-  img.alt = "Support téléphone pliable VAZIO";
-  img.onerror = () => {
-    mainPhoto.innerHTML = '<div class="placeholder">📱</div>';
-  };
-  mainPhoto.appendChild(img);
+  currentPhoto = (index + productPhotos.length) % productPhotos.length;
+  mainPhoto.src = productPhotos[currentPhoto];
+  photoCount.textContent = `${currentPhoto + 1} / ${productPhotos.length}`;
 
-  [...thumbnails.children].forEach((button, i) => {
-    button.classList.toggle("active", i === index);
+  document.querySelectorAll(".thumb").forEach((thumb, i) => {
+    thumb.classList.toggle("active", i === currentPhoto);
   });
 }
 
-productPhotos.forEach((path, index) => {
+productPhotos.forEach((src, index) => {
   const button = document.createElement("button");
   button.className = "thumb" + (index === 0 ? " active" : "");
   button.type = "button";
-  button.setAttribute("aria-label", "Voir la photo " + (index + 1));
+  button.setAttribute("aria-label", `Afficher la photo ${index + 1}`);
+
   const img = document.createElement("img");
-  img.src = path;
-  img.alt = "Photo " + (index + 1);
+  img.src = src;
+  img.alt = `Support de téléphone - photo ${index + 1}`;
+  img.loading = "lazy";
+
   button.appendChild(img);
-  button.onclick = () => showPhoto(index);
+  button.addEventListener("click", () => showPhoto(index));
   thumbnails.appendChild(button);
 });
 
-if (productPhotos.length > 0) {
-  showPhoto(0);
-}
+document.getElementById("prevBtn").addEventListener("click", () => {
+  showPhoto(currentPhoto - 1);
+});
+document.getElementById("nextBtn").addEventListener("click", () => {
+  showPhoto(currentPhoto + 1);
+});
 
-function orderWhatsApp() {
-  const name = document.getElementById("customer").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const color = document.getElementById("color").value;
-  const payment = document.getElementById("payment").value;
+// Navigation par balayage sur écran tactile
+let touchStartX = 0;
+const photoArea = document.getElementById("photoArea");
 
-  if (!name || !phone || !address) {
-    alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
-    return;
+photoArea.addEventListener("touchstart", event => {
+  touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+photoArea.addEventListener("touchend", event => {
+  const touchEndX = event.changedTouches[0].screenX;
+  const distance = touchEndX - touchStartX;
+
+  if (Math.abs(distance) > 45) {
+    showPhoto(currentPhoto + (distance < 0 ? 1 : -1));
   }
+}, { passive: true });
 
+// Vérification des images
+mainPhoto.addEventListener("error", () => {
+  mainPhoto.alt = "Image introuvable : vérifiez le nom du fichier dans GitHub.";
+});
+
+// Commande WhatsApp
+document.getElementById("orderBtn").addEventListener("click", () => {
+  const color = document.getElementById("color").value;
   const message =
-    "Bonjour VAZIO ! Je souhaite commander :\n\n" +
-    "Produit : Support téléphone pliable\n" +
+    "Bonjour VAZIO ! Je souhaite commander :\n" +
+    "Produit : Support de téléphone pliable\n" +
     "Prix : 1 500 FCFA\n" +
     "Couleur : " + color + "\n" +
-    "Nom : " + name + "\n" +
-    "Téléphone : " + phone + "\n" +
-    "Adresse : " + address + "\n" +
-    "Paiement : " + payment + "\n\n" +
-    "Merci de confirmer ma commande.";
+    "Merci de me confirmer la disponibilité et les modalités de livraison.";
 
-  const whatsappNumber = "2250777848470";
-  const url = "https://wa.me/" + whatsappNumber + "?text=" +
-    encodeURIComponent(message);
-  window.open(url, "_blank");
-}
+  const whatsappURL =
+    "https://wa.me/2250777848470?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+});
 </script>
 </body>
 </html>
+
