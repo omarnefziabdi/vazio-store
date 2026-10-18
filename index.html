@@ -1,269 +1,35 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#111111">
-<title>VAZIO — Boutique en ligne</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VAZIO — Votre shopping, autrement</title>
 <style>
-:root{--black:#111;--yellow:#ffd21f;--gray:#f6f6f6}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--black);background:#fff}
-button,input,select{font:inherit}
-button{cursor:pointer}
-header{background:#111;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:30px;font-weight:900;letter-spacing:3px}
-.logo span,footer span{color:var(--yellow)}
-.header-info{text-align:right;font-size:12px;color:#ddd;line-height:1.6}
-.hero{padding:38px 18px;text-align:center;color:white;background:linear-gradient(120deg,#111,#303030)}
-.hero h1{font-size:clamp(27px,5vw,42px);margin:0 0 10px}
-.hero h1 span{color:var(--yellow)}
-.hero p{color:#ddd;line-height:1.6;margin:0}
-main{max-width:1100px;margin:auto;padding:35px 20px 50px}
-.product{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:start}
-.gallery{min-width:0}
-.main-photo-wrap{position:relative;overflow:hidden;background:#f5f5f5;border-radius:16px;touch-action:pan-y}
-#mainPhoto{display:block;width:100%;height:420px;object-fit:contain;padding:12px}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(17,17,17,.82);color:white;font-size:27px;display:grid;place-items:center}
-.arrow.prev{left:12px}.arrow.next{right:12px}
-.photo-count{position:absolute;bottom:12px;right:12px;background:#222;color:white;border-radius:20px;padding:6px 11px;font-size:12px}
-.thumbnails{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding:2px 2px 8px}
-.thumb{flex:0 0 76px;height:72px;background:#fff;border:2px solid #ddd;border-radius:10px;padding:3px}
-.thumb.active{border-color:#f0bd00}
-.thumb img{width:100%;height:100%;object-fit:contain}
-.details{min-width:0}
-.tag{display:inline-block;background:#fff3b5;border-radius:6px;padding:7px 10px;font-size:11px;font-weight:800}
-.details h2{font-size:29px;line-height:1.25;margin:14px 0 10px}
-.description{color:#606060;line-height:1.8;font-size:15px}
-.price{font-size:36px;font-weight:900;margin:20px 0}
-.price small{font-size:14px}
-.order-form{margin-top:20px;padding:22px;background:white;border:1px solid #eee;border-radius:16px;box-shadow:0 8px 28px #0000000c}
-.field-label{display:block;font-size:14px;font-weight:700;margin:16px 0 8px}
-.order-form input,.order-form select,.color-select{display:block;width:100%;height:52px;padding:0 14px;border:1px solid #ddd;border-radius:10px;background:#fafafa;color:#171717;font-size:15px;outline:none}
-.order-form input:focus,.order-form select:focus,.color-select:focus{border-color:#e5b900;background:white}
-.order-button{width:100%;min-height:54px;margin-top:23px;padding:14px;border:0;border-radius:10px;background:var(--yellow);color:#111;font-weight:800;font-size:15px;line-height:1.5;box-shadow:0 5px 12px #ffd21f30}
-.order-button:hover{background:#f0c000}
-.form-note{font-size:12px;color:#777;line-height:1.6;margin:12px 0 0}
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
-.benefit{text-align:center;background:#f6f6f6;border-radius:12px;padding:20px 12px}
-.benefit strong{display:block;margin-bottom:8px}
-.benefit p{font-size:13px;line-height:1.6;color:#555;margin:0}
-footer{background:#111;color:white;text-align:center;padding:25px 15px;font-size:13px;line-height:1.9}
-footer p{margin:4px 0;color:#ccc}
-@media(max-width:720px){
- header{padding:15px 18px}.logo{font-size:25px}.header-info{font-size:11px}
- .hero{padding:30px 15px}main{padding:22px 14px 35px}
- .product{grid-template-columns:1fr;gap:25px}
- #mainPhoto{height:min(85vw,390px)}
- .details h2{font-size:26px}.price{font-size:33px}
- .order-form{padding:17px}
- .order-form input,.order-form select{height:51px;font-size:16px}
- .benefits{grid-template-columns:1fr}
-}
-</style>
-</head>
+:root{--yellow:#ffc400;--black:#101010;--muted:#666;--line:#e9e9e9}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#171717;background:#fff}a{color:inherit;text-decoration:none}.top{background:#111;color:#fff;padding:9px 5%;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.header{padding:18px 5%;display:flex;align-items:center;gap:24px;justify-content:space-between}.logo{font-size:35px;font-weight:900;letter-spacing:7px;line-height:1}.logo small{display:block;font-size:9px;letter-spacing:3px;margin-top:5px}.search{flex:1;max-width:560px;display:flex;border:1px solid #ddd;border-radius:12px;overflow:hidden}.search input{border:0;padding:14px;width:100%;font-size:15px;outline:none}.search button,.btn{border:0;background:var(--yellow);padding:13px 18px;font-weight:800;cursor:pointer}.nav{background:#111;color:white;padding:13px 5%;display:flex;gap:25px;overflow:auto;white-space:nowrap}.nav a:first-child{color:var(--yellow)}.hero{background:linear-gradient(110deg,#151515,#3b3025);color:white;padding:35px 6%;display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center;min-height:310px}.hero h1{font-size:clamp(30px,5vw,58px);line-height:.98;margin:10px 0}.hero h1 span{color:var(--yellow)}.tag{display:inline-block;background:var(--yellow);color:#111;padding:7px 12px;border-radius:8px;font-weight:900}.hero p{color:#eee;line-height:1.6}.hero-art{background:#eee;color:#222;border-radius:18px;min-height:210px;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;font-size:90px}.hero-art small{display:block;font-size:15px;font-weight:bold}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px 5%}.feature{border:1px solid var(--line);border-radius:12px;padding:15px;text-align:center;font-weight:700}.feature span{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:5px}.section{padding:18px 5%}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.section h2{margin:10px 0 18px}.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.cat{padding:18px 10px;background:#f7f7f7;border:1px solid var(--line);border-radius:12px;text-align:center;font-weight:700}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.product{border:1px solid var(--line);border-radius:14px;overflow:hidden}.product-img{height:180px;background:linear-gradient(135deg,#f3f3f3,#e4e4e4);display:flex;align-items:center;justify-content:center;font-size:65px}.product-img img{width:100%;height:100%;object-fit:cover;cursor:pointer}.product-img{cursor:pointer}.color-select{width:100%;padding:9px;border:1px solid #ddd;border-radius:8px;margin:0 0 10px;background:#fff}.product-info{padding:13px}.product h3{font-size:15px;margin:0 0 8px;line-height:1.35}.price{color:#d71920;font-size:18px;font-weight:900;margin:8px 0 12px}.product button{width:100%;border-radius:9px}.note{font-size:13px;color:var(--muted);line-height:1.6}.modal{display:none;position:fixed;inset:0;background:#000b;z-index:1000;padding:18px;overflow:auto}.modal.open{display:flex;align-items:center;justify-content:center}.modal-card{background:#fff;border-radius:18px;max-width:900px;width:100%;padding:20px;position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:22px}.gallery-stage{position:relative}.modal-main{width:100%;height:360px;object-fit:contain;background:#f5f5f5;border-radius:12px}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:#111;font-size:26px;font-weight:bold;box-shadow:0 2px 10px #0002;cursor:pointer;z-index:2}.gallery-prev{left:10px}.gallery-next{right:10px}.gallery-count{text-align:center;font-size:12px;color:#666;margin-top:6px}.thumbs{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}.thumbs .thumb{padding:0;width:78px;height:70px;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#fff;cursor:pointer}.thumbs .thumb img{display:block;width:100%;height:100%;object-fit:cover}.thumbs .thumb.active{border-color:var(--yellow)}.modal-close{position:absolute;right:12px;top:10px;border:0;background:#eee;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer}.detail-open{cursor:pointer}@media(max-width:650px){.modal-card{grid-template-columns:1fr;padding:14px}.modal-main{height:260px}}.footer{background:#111;color:white;padding:25px 5%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.wa{position:fixed;right:18px;bottom:18px;background:#16bd5b;color:white;padding:14px 18px;border-radius:999px;font-weight:800;box-shadow:0 4px 18px #0003}.pill{background:#fff3c0;padding:5px 9px;border-radius:99px;font-size:12px;font-weight:700}@media(max-width:760px){.header{flex-wrap:wrap;gap:15px}.logo{font-size:28px}.search{order:3;flex-basis:100%;max-width:none}.hero{grid-template-columns:1fr;padding:28px 6%}.hero-art{min-height:130px;font-size:65px}.features{grid-template-columns:1fr}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.product-img{height:125px}.nav{gap:18px}.top{font-size:12px}}
+</style></head>
 <body>
-
-<header>
-  <div class="logo">VA<span>Z</span>IO</div>
-  <div class="header-info">Votre boutique en ligne<br>Abidjan, Côte d’Ivoire</div>
-</header>
-
-<section class="hero">
-  <h1>Simple. Pratique. <span>VAZIO.</span></h1>
-  <p>Découvrez nos accessoires pratiques à petits prix.</p>
-</section>
-
-<main>
-  <section class="product">
-    <div class="gallery">
-      <div class="main-photo-wrap" id="photoArea">
-        <img id="mainPhoto" alt="Support de téléphone pliable VAZIO">
-        <button class="arrow prev" id="prevBtn" type="button" aria-label="Photo précédente">‹</button>
-        <button class="arrow next" id="nextBtn" type="button" aria-label="Photo suivante">›</button>
-        <div class="photo-count" id="photoCount">1 / 3</div>
-      </div>
-      <div class="thumbnails" id="thumbnails"></div>
-      <p class="form-note" id="photoStatus" aria-live="polite"></p>
-    </div>
-
-    <div class="details">
-      <span class="tag">ACCESSOIRE PRATIQUE</span>
-      <h2>Support de téléphone pliable</h2>
-      <p class="description">
-        Un support compact et pratique pour votre téléphone.
-        Facile à transporter, idéal pour regarder des vidéos,
-        travailler ou passer des appels.
-      </p>
-      <div class="price">1 500 <small>FCFA</small></div>
-
-      <div class="order-form">
-        <label class="field-label" for="color">Choisissez votre couleur :</label>
-        <select id="color" class="color-select">
-          <option value="Noir">Noir</option>
-          <option value="Rouge">Rouge</option>
-          <option value="Orange">Orange</option>
-          <option value="Blanc">Blanc</option>
-          <option value="Bleu">Bleu</option>
-        </select>
-
-        <label class="field-label" for="customerName">Nom complet :</label>
-        <input id="customerName" type="text" autocomplete="name" placeholder="Votre nom complet" required>
-
-        <label class="field-label" for="customerPhone">Téléphone :</label>
-        <input id="customerPhone" type="tel" autocomplete="tel" placeholder="Votre numéro de téléphone" required>
-
-        <label class="field-label" for="customerAddress">Adresse de livraison :</label>
-        <input id="customerAddress" type="text" autocomplete="street-address" placeholder="Ex. : Abatta, repère..." required>
-
-        <label class="field-label" for="payment">Mode de paiement :</label>
-        <select id="payment">
-          <option value="Mobile Money">Mobile Money</option>
-          <option value="Paiement à la livraison">Paiement à la livraison</option>
-        </select>
-
-        <button class="order-button" id="orderBtn" type="button">
-          Commander sur WhatsApp
-        </button>
-        <p class="form-note">Vérifiez vos informations avant de confirmer votre commande sur WhatsApp.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="benefits">
-    <div class="benefit"><strong>📱 Pratique</strong><p>Pour vos vidéos et appels.</p></div>
-    <div class="benefit"><strong>🎒 Compact</strong><p>Facile à transporter.</p></div>
-    <div class="benefit"><strong>💬 Commande facile</strong><p>Commande directe sur WhatsApp.</p></div>
-  </section>
-</main>
-
-<footer>
-  <strong>VA<span>Z</span>IO</strong>
-  <p>Votre boutique en ligne à Abidjan</p>
-  <p>© 2026 VAZIO — Tous droits réservés</p>
-</footer>
-
+<div class="top"><span>📍 Abidjan, Côte d’Ivoire</span><span>🚚 Livraison selon votre zone</span><span>💳 Paiement à la livraison & Mobile Money</span></div>
+<header class="header"><a class="logo" href="#">VAZIO<small>VOTRE SHOPPING, AUTREMENT</small></a><form class="search" onsubmit="event.preventDefault();filterProducts()"><input id="search" placeholder="Rechercher un produit…"><button>⌕</button></form><strong>🛒 <span id="cartCount">0</span></strong></header>
+<nav class="nav"><a href="#accueil">Accueil</a><a href="#produits">Tous les produits</a><a href="#categories">Accessoires 3D</a><a href="#paiement">Livraison & paiement</a><a href="#contact">Contact</a><a href="admin.html">Administration</a></nav>
+<section class="hero" id="accueil"><div><span class="tag">NOUVEAUTÉ VAZIO</span><h1>MINI SUPPORT<br><span>TÉLÉPHONE</span></h1><p>Pliable, compact et pratique, avec porte-clés intégré. Emportez-le partout pour vos vidéos et appels.</p><p><strong>1 500 FCFA</strong> <span class="pill">Plusieurs couleurs</span></p><a class="btn" href="#produits">Découvrir les produits →</a></div><div class="hero-art">📱<div><small>Pratique partout</small><small>VAZIO · Accessoires malins</small></div></div></section>
+<div class="features"><div class="feature">🚚 Livraison<span>À confirmer selon votre commune</span></div><div class="feature">💳 Paiement flexible<span>À la livraison ou Mobile Money</span></div><div class="feature">💬 Commande simple<span>Confirmation par WhatsApp</span></div></div>
+<section class="section" id="categories"><div class="section-title"><h2>Nos catégories</h2></div><div class="categories"><a class="cat" href="#produits">📱<br>Accessoires téléphone</a><a class="cat" href="#produits">🧩<br>Impression 3D</a><a class="cat" href="#produits">🏠<br>Maison & déco</a><a class="cat" href="#produits">🎁<br>Idées cadeaux</a></div></section>
+<section class="section" id="produits"><div class="section-title"><h2>Nos produits</h2><span class="pill">Prix en FCFA</span></div><div class="products" id="productGrid">
+<article class="product" data-name="mini support téléphone pliable porte-clés"><div class="product-img" onclick="openProduct()"><img src="assets/mini-support.webp" alt="Mini support téléphone pliable avec porte-clés en plusieurs couleurs"></div><div class="product-info"><h3 class="detail-open" onclick="openProduct()">Mini Support Téléphone Pliable avec Porte-Clés</h3><div class="price">1 500 FCFA</div><label for="supportColor" class="note">Couleur :</label><select id="supportColor" class="color-select"><option>Noir</option><option>Rouge</option><option>Orange</option><option>Blanc</option><option>Bleu</option></select><button class="btn" onclick="addToCart('Mini Support Téléphone Pliable avec Porte-Clés — couleur : '+document.getElementById('supportColor').value,1500)">Commander sur WhatsApp</button></div></article>
+<article class="product" data-name="accessoire impression 3d"><div class="product-img">🧩</div><div class="product-info"><h3>Accessoire imprimé en 3D</h3><div class="price">Prix sur demande</div><button class="btn" onclick="orderWhatsApp('Accessoire imprimé en 3D')">Demander le prix</button></div></article>
+<article class="product" data-name="porte-clés personnalisé 3d"><div class="product-img">🔑</div><div class="product-info"><h3>Porte-clés personnalisé 3D</h3><div class="price">Prix sur demande</div><button class="btn" onclick="orderWhatsApp('Porte-clés personnalisé 3D')">Demander le prix</button></div></article>
+<article class="product" data-name="création sur mesure impression 3d"><div class="product-img">🛠️</div><div class="product-info"><h3>Création sur mesure</h3><div class="price">Sur devis</div><button class="btn" onclick="orderWhatsApp('Création sur mesure')">Nous contacter</button></div></article>
+</div><p class="note">Couleurs proposées : Noir, Rouge, Orange, Blanc et Bleu. La disponibilité de la couleur choisie est confirmée lors de la commande.</p></section>
+<section class="section" id="paiement"><h2>Livraison & paiement</h2><p>Choisissez le paiement à la livraison ou Mobile Money. Le mode de paiement, le coût de livraison et la disponibilité sont confirmés avec vous avant validation.</p><p class="note">Les commandes WhatsApp sont envoyées au numéro officiel VAZIO. La confirmation de disponibilité, de livraison et du paiement se fait par message.</p></section>
+<footer class="footer" id="contact"><div><strong style="font-size:25px;letter-spacing:5px">VAZIO</strong><p>Votre shopping, autrement.</p></div><div><strong>Contact & commandes</strong><p>WhatsApp : +225 07 77 84 84 70</p><p>Abidjan, Côte d’Ivoire</p></div><div><strong>Paiement</strong><p>Paiement à la livraison · Mobile Money</p></div></footer>
+<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-label="Détails du produit" onclick="if(event.target===this)closeProduct()"><div class="modal-card"><button class="modal-close" onclick="closeProduct()" aria-label="Fermer">×</button><div><div class="gallery-stage"><button type="button" class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Image précédente">‹</button><img class="modal-main" id="modalMain" src="assets/mini-support.webp" alt="Mini support téléphone"><button type="button" class="gallery-arrow gallery-next" id="galleryNext" aria-label="Image suivante">›</button></div><div class="gallery-count" id="galleryCount">Image 1 / 4</div><div class="thumbs" id="galleryThumbs"><button type="button" class="thumb active" data-index="0" aria-label="Afficher la photo 1"><img src="assets/mini-support.webp" alt="Vue 1"></button><button type="button" class="thumb" data-index="1" aria-label="Afficher la photo 2"><img src="assets/mini-support-2.webp" alt="Vue 2"></button><button type="button" class="thumb" data-index="2" aria-label="Afficher la photo 3"><img src="assets/mini-support-3.webp" alt="Vue 3"></button><button type="button" class="thumb" data-index="3" aria-label="Afficher la photo 4"><img src="assets/mini-support-ad.jpeg" alt="Visuel produit"></button></div></div><div><span class="pill">VAZIO · Accessoires téléphone</span><h2>Mini Support Téléphone Pliable avec Porte-Clés</h2><div class="price">1 500 FCFA</div><p>Pliable, compact et facile à transporter. Utilisez-le pour regarder des vidéos ou passer des appels, avec un porte-clés intégré pour l’emporter partout.</p><label for="modalColor" class="note">Choisir une couleur :</label><select id="modalColor" class="color-select"><option>Noir</option><option>Rouge</option><option>Orange</option><option>Blanc</option><option>Bleu</option></select><button class="btn" onclick="addToCart('Mini Support Téléphone Pliable avec Porte-Clés — couleur : '+document.getElementById('modalColor').value,1500)">Commander sur WhatsApp</button><p class="note">La disponibilité de la couleur sera confirmée lors de la commande.</p></div></div></div>
+<a class="wa" href="#contact" onclick="orderWhatsApp('Bonjour, je souhaite des informations sur les produits VAZIO');return false;">WhatsApp</a>
 <script>
-"use strict";
-
-/* Noms exacts des 3 images présentes dans le dépôt GitHub */
-const productPhotos = [
-  "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_37.webp",
-  "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_44.webp",
-  "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_49.jpg"
-];
-
-let currentPhoto = 0;
-
-const mainPhoto = document.getElementById("mainPhoto");
-const photoCount = document.getElementById("photoCount");
-const thumbnails = document.getElementById("thumbnails");
-const photoStatus = document.getElementById("photoStatus");
-const photoArea = document.getElementById("photoArea");
-
-/* Créer les miniatures une seule fois */
-productPhotos.forEach((src, index) => {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "thumb";
-  button.setAttribute("aria-label", "Afficher la photo " + (index + 1));
-
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = "Photo du produit " + (index + 1);
-  img.loading = "lazy";
-
-  img.addEventListener("error", () => {
-    button.title = "Image introuvable : vérifiez le nom du fichier sur GitHub";
-  });
-
-  button.appendChild(img);
-  button.addEventListener("click", () => showPhoto(index));
-  thumbnails.appendChild(button);
-});
-
-/* Changer la photo principale */
-function showPhoto(index) {
-  currentPhoto = (index + productPhotos.length) % productPhotos.length;
-
-  mainPhoto.onerror = () => {
-    photoStatus.textContent =
-      "Photo introuvable. Vérifiez le nom du fichier dans GitHub.";
-  };
-
-  mainPhoto.onload = () => {
-    photoStatus.textContent = "";
-  };
-
-  mainPhoto.src = productPhotos[currentPhoto];
-  photoCount.textContent =
-    (currentPhoto + 1) + " / " + productPhotos.length;
-
-  document.querySelectorAll(".thumb").forEach((button, i) => {
-    button.classList.toggle("active", i === currentPhoto);
-  });
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => {
-  showPhoto(currentPhoto - 1);
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  showPhoto(currentPhoto + 1);
-});
-
-/* Navigation par balayage sur téléphone */
-let touchStartX = 0;
-let touchStartY = 0;
-
-photoArea.addEventListener("touchstart", event => {
-  touchStartX = event.changedTouches[0].clientX;
-  touchStartY = event.changedTouches[0].clientY;
-}, { passive: true });
-
-photoArea.addEventListener("touchend", event => {
-  const dx = event.changedTouches[0].clientX - touchStartX;
-  const dy = event.changedTouches[0].clientY - touchStartY;
-
-  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
-    showPhoto(currentPhoto + (dx < 0 ? 1 : -1));
-  }
-}, { passive: true });
-
-/* Afficher la première image */
-showPhoto(0);
-
-/* Préparer la commande WhatsApp */
-document.getElementById("orderBtn").addEventListener("click", () => {
-  const name = document.getElementById("customerName").value.trim();
-  const phone = document.getElementById("customerPhone").value.trim();
-  const address = document.getElementById("customerAddress").value.trim();
-  const color = document.getElementById("color").value;
-  const payment = document.getElementById("payment").value;
-
-  if (!name || !phone || !address) {
-    alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
-    return;
-  }
-
-  const message =
-    "Bonjour VAZIO ! Je souhaite commander :\n\n" +
-    "Produit : Support téléphone pliable\n" +
-    "Prix : 1 500 FCFA\n" +
-    "Couleur : " + color + "\n" +
-    "Nom : " + name + "\n" +
-    "Téléphone : " + phone + "\n" +
-    "Adresse : " + address + "\n" +
-    "Paiement : " + payment + "\n\n" +
-    "Merci de confirmer ma commande.";
-
-  const whatsappURL =
-    "https://wa.me/2250777848470?text=" +
-    encodeURIComponent(message);
-
-  window.location.href = whatsappURL;
-});
-</script>
-</body>
-</html>
+let cart=[];function addToCart(name,price){cart.push({name,price});document.getElementById('cartCount').textContent=cart.length;let msg='Bonjour VAZIO, je souhaite commander :\n'+cart.map((p,i)=>(i+1)+'. '+p.name+' — '+p.price+' FCFA').join('\n')+'\nTotal : '+cart.reduce((s,p)=>s+p.price,0)+' FCFA\nMerci de confirmer la disponibilité, la livraison et les moyens de paiement.';if(confirm('Produit ajouté au panier. Envoyer la commande via WhatsApp ?'))orderWhatsApp(msg)}
+const galleryImages=['assets/mini-support.webp','assets/mini-support-2.webp','assets/mini-support-3.webp','assets/mini-support-ad.jpeg'];let galleryIndex=0;function openProduct(){document.getElementById('productModal').classList.add('open');document.body.style.overflow='hidden';showGallery(0)}function closeProduct(){document.getElementById('productModal').classList.remove('open');document.body.style.overflow=''}function showGallery(index){galleryIndex=(index+galleryImages.length)%galleryImages.length;const main=document.getElementById('modalMain');main.src=galleryImages[galleryIndex];document.querySelectorAll('#galleryThumbs .thumb').forEach((button,i)=>button.classList.toggle('active',i===galleryIndex));document.getElementById('galleryCount').textContent='Image '+(galleryIndex+1)+' / '+galleryImages.length}function setGallery(index){showGallery(Number(index))}function changeGallery(direction){showGallery(galleryIndex+direction)}document.getElementById('galleryPrev').addEventListener('click',()=>changeGallery(-1));document.getElementById('galleryNext').addEventListener('click',()=>changeGallery(1));document.querySelectorAll('#galleryThumbs .thumb').forEach(button=>button.addEventListener('click',()=>setGallery(button.dataset.index)));let touchStartX=0;document.getElementById('modalMain').addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});document.getElementById('modalMain').addEventListener('touchend',e=>{const delta=e.changedTouches[0].screenX-touchStartX;if(Math.abs(delta)>40)changeGallery(delta<0?1:-1)},{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProduct();if(document.getElementById('productModal').classList.contains('open')&&e.key==='ArrowRight')changeGallery(1);if(document.getElementById('productModal').classList.contains('open')&&e.key==='ArrowLeft')changeGallery(-1)});
+function orderWhatsApp(message){const phone='2250777848470';const url='https://wa.me/'+phone+'?text='+encodeURIComponent(message);window.open(url,'_blank')}
+function filterProducts(){const q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.product').forEach(p=>p.style.display=p.dataset.name.includes(q)?'':'none')}
+// VAZIO catalog: products created in admin.html are shared when both pages are hosted on the same domain.
+function renderAdminProducts(){try{const saved=JSON.parse(localStorage.getItem('vazioProducts')||'[]');if(!saved.length)return;const grid=document.getElementById('productGrid');grid.innerHTML='';saved.forEach((p,i)=>{const card=document.createElement('article');card.className='product';card.dataset.name=(p.name||'').toLowerCase();const image=(p.images&&p.images[0])||'';card.innerHTML=`<div class="product-img" data-open="${i}">${image?`<img src="${image}" alt="${p.name}">`:'📦'}</div><div class="product-info"><h3 class="detail-open" data-open="${i}"></h3><div class="price"></div><label class="note">Couleur :</label><select class="color-select">${(p.colors||['Noir','Rouge','Orange','Blanc','Bleu']).map(c=>`<option></option>`).join('')}</select><button class="btn">Commander sur WhatsApp</button></div>`;card.querySelector('h3').textContent=p.name;card.querySelector('.price').textContent=(p.price?Number(p.price).toLocaleString('fr-FR')+' FCFA':'Prix sur demande');const sel=card.querySelector('select');sel.innerHTML='';(p.colors&&p.colors.length?p.colors:['Noir','Rouge','Orange','Blanc','Bleu']).forEach(c=>{const o=document.createElement('option');o.textContent=c;sel.appendChild(o)});card.querySelector('button').onclick=()=>orderWhatsApp('Bonjour VAZIO, je souhaite commander : '+p.name+' — couleur : '+sel.value+' — '+(p.price||'prix à confirmer')+' FCFA');card.querySelectorAll('[data-open]').forEach(el=>el.onclick=()=>openSavedProduct(p));grid.appendChild(card)}); }catch(e){console.warn('Catalog VAZIO',e)}}
+function openSavedProduct(p){const modal=document.getElementById('productModal');modal.classList.add('open');document.body.style.overflow='hidden';const imgs=(p.images&&p.images.length?p.images:galleryImages);galleryImages.splice(0,galleryImages.length,...imgs);const thumbs=document.getElementById('galleryThumbs');thumbs.innerHTML='';imgs.forEach((src,i)=>{const b=document.createElement('button');b.type='button';b.className='thumb'+(i===0?' active':'');b.innerHTML='<img alt="Photo produit">';b.querySelector('img').src=src;b.onclick=()=>showGallery(i);thumbs.appendChild(b)});modal.querySelector('h2').textContent=p.name;modal.querySelector('.modal-card .price').textContent=(p.price?Number(p.price).toLocaleString('fr-FR')+' FCFA':'Prix sur demande');showGallery(0);const select=document.getElementById('modalColor');select.innerHTML='';(p.colors&&p.colors.length?p.colors:['Noir','Rouge','Orange','Blanc','Bleu']).forEach(c=>{const o=document.createElement('option');o.textContent=c;select.appendChild(o)});const btn=modal.querySelector('.modal-card .btn');btn.onclick=()=>orderWhatsApp('Bonjour VAZIO, je souhaite commander : '+p.name+' — couleur : '+select.value+' — '+(p.price||'prix à confirmer')+' FCFA')}
+renderAdminProducts();
+</script></body></html>
