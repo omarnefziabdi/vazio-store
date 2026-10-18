@@ -3,304 +3,71 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111111">
-<title>VAZIO | Boutique en ligne</title>
+<title>VAZIO — Boutique en ligne</title>
 <style>
-:root {
-  --black: #111111;
-  --yellow: #ffd21f;
-  --white: #ffffff;
-  --gray: #f5f5f5;
+:root{--black:#111;--yellow:#ffd21f;--gray:#f6f6f6}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--black);background:#fff}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{background:#111;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:30px;font-weight:900;letter-spacing:3px}
+.logo span,footer span{color:var(--yellow)}
+.header-info{text-align:right;font-size:12px;color:#ddd;line-height:1.6}
+.hero{padding:38px 18px;text-align:center;color:white;background:linear-gradient(120deg,#111,#303030)}
+.hero h1{font-size:clamp(27px,5vw,42px);margin:0 0 10px}
+.hero h1 span{color:var(--yellow)}
+.hero p{color:#ddd;line-height:1.6;margin:0}
+main{max-width:1100px;margin:auto;padding:35px 20px 50px}
+.product{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:start}
+.gallery{min-width:0}
+.main-photo-wrap{position:relative;overflow:hidden;background:#f5f5f5;border-radius:16px;touch-action:pan-y}
+#mainPhoto{display:block;width:100%;height:420px;object-fit:contain;padding:12px}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(17,17,17,.82);color:white;font-size:27px;display:grid;place-items:center}
+.arrow.prev{left:12px}.arrow.next{right:12px}
+.photo-count{position:absolute;bottom:12px;right:12px;background:#222;color:white;border-radius:20px;padding:6px 11px;font-size:12px}
+.thumbnails{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding:2px 2px 8px}
+.thumb{flex:0 0 76px;height:72px;background:#fff;border:2px solid #ddd;border-radius:10px;padding:3px}
+.thumb.active{border-color:#f0bd00}
+.thumb img{width:100%;height:100%;object-fit:contain}
+.details{min-width:0}
+.tag{display:inline-block;background:#fff3b5;border-radius:6px;padding:7px 10px;font-size:11px;font-weight:800}
+.details h2{font-size:29px;line-height:1.25;margin:14px 0 10px}
+.description{color:#606060;line-height:1.8;font-size:15px}
+.price{font-size:36px;font-weight:900;margin:20px 0}
+.price small{font-size:14px}
+.order-form{margin-top:20px;padding:22px;background:white;border:1px solid #eee;border-radius:16px;box-shadow:0 8px 28px #0000000c}
+.field-label{display:block;font-size:14px;font-weight:700;margin:16px 0 8px}
+.order-form input,.order-form select,.color-select{display:block;width:100%;height:52px;padding:0 14px;border:1px solid #ddd;border-radius:10px;background:#fafafa;color:#171717;font-size:15px;outline:none}
+.order-form input:focus,.order-form select:focus,.color-select:focus{border-color:#e5b900;background:white}
+.order-button{width:100%;min-height:54px;margin-top:23px;padding:14px;border:0;border-radius:10px;background:var(--yellow);color:#111;font-weight:800;font-size:15px;line-height:1.5;box-shadow:0 5px 12px #ffd21f30}
+.order-button:hover{background:#f0c000}
+.form-note{font-size:12px;color:#777;line-height:1.6;margin:12px 0 0}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+.benefit{text-align:center;background:#f6f6f6;border-radius:12px;padding:20px 12px}
+.benefit strong{display:block;margin-bottom:8px}
+.benefit p{font-size:13px;line-height:1.6;color:#555;margin:0}
+footer{background:#111;color:white;text-align:center;padding:25px 15px;font-size:13px;line-height:1.9}
+footer p{margin:4px 0;color:#ccc}
+@media(max-width:720px){
+ header{padding:15px 18px}.logo{font-size:25px}.header-info{font-size:11px}
+ .hero{padding:30px 15px}main{padding:22px 14px 35px}
+ .product{grid-template-columns:1fr;gap:25px}
+ #mainPhoto{height:min(85vw,390px)}
+ .details h2{font-size:26px}.price{font-size:33px}
+ .order-form{padding:17px}
+ .order-form input,.order-form select{height:51px;font-size:16px}
+ .benefits{grid-template-columns:1fr}
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--black);
-  background: var(--white);
-}
-button, select { font: inherit; }
-button { cursor: pointer; }
-header {
-  background: var(--black);
-  color: var(--white);
-  padding: 17px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-.logo span { color: var(--yellow); }
-.header-text { font-size: 13px; color: #ddd; }
-.hero {
-  background: linear-gradient(120deg, #111 0%, #292929 100%);
-  color: white;
-  text-align: center;
-  padding: 42px 20px;
-}
-.hero h1 { margin: 0 0 12px; font-size: clamp(27px, 5vw, 42px); }
-.hero h1 span { color: var(--yellow); }
-.hero p { margin: 0; color: #ddd; line-height: 1.6; }
-main {
-  max-width: 1050px;
-  margin: auto;
-  padding: 35px 18px 50px;
-}
-.product {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 35px;
-  align-items: start;
-}
-.gallery { min-width: 0; }
-.main-photo-wrap {
-  position: relative;
-  background: var(--gray);
-  border-radius: 16px;
-  overflow: hidden;
-  touch-action: pan-y;
-}
-#mainPhoto {
-  display: block;
-  width: 100%;
-  height: 390px;
-  object-fit: contain;
-  padding: 15px;
-}
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(17,17,17,.82);
-  color: white;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  font-size: 25px;
-  z-index: 2;
-}
-.arrow:hover { background: #000; }
-.arrow.prev { left: 12px; }
-.arrow.next { right: 12px; }
-.photo-count {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0,0,0,.7);
-  color: white;
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-.thumbnails {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  overflow-x: auto;
-  padding: 2px 2px 8px;
-}
-.thumb {
-  flex: 0 0 75px;
-  height: 72px;
-  border: 2px solid #ddd;
-  border-radius: 9px;
-  padding: 3px;
-  background: white;
-}
-.thumb.active { border-color: var(--yellow); }
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.details h2 { margin: 0 0 12px; font-size: 28px; }
-.description { color: #555; line-height: 1.7; }
-.price {
-  font-size: 32px;
-  font-weight: 900;
-  margin: 20px 0;
-}
-.price small { font-size: 14px; font-weight: 600; }
-.tag {
-  display: inline-block;
-  background: #fff3b8;
-  padding: 7px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-}
-.field-label {
-  display: block;
-  font-weight: bold;
-  margin: 22px 0 10px;
-}
-select {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 9px;
-  background: white;
-}
-.order-button {
-  display: block;
-  width: 100%;
-  margin-top: 22px;
-  border: none;
-  border-radius: 10px;
-  background: var(--yellow);
-  color: #111;
-  padding: 16px;
-  font-weight: 900;
-  font-size: 16px;
-}
-.order-button:hover { background: #f0c000; }
-.delivery {
-  margin-top: 17px;
-  background: var(--gray);
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 14px;
-  line-height: 1.8;
-}
-.benefits {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 38px;
-}
-.benefit {
-  text-align: center;
-  background: var(--gray);
-  border-radius: 12px;
-  padding: 18px 10px;
-}
-.benefit strong { display: block; margin-bottom: 7px; }
-.benefit p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
-footer {
-  text-align: center;
-  padding: 24px 15px;
-  background: var(--black);
-  color: white;
-  font-size: 13px;
-  line-height: 1.8;
-}
-footer span { color: var(--yellow); }
-@media (max-width: 700px) {
-  header { padding: 15px 18px; }
-  .logo { font-size: 25px; }
-  .header-text { font-size: 11px; text-align: right; }
-  .hero { padding: 32px 16px; }
-  main { padding: 25px 15px 35px; }
-  .product { grid-template-columns: 1fr; gap: 25px; }
-  #mainPhoto { height: min(82vw, 360px); }
-  .details h2 { font-size: 25px; }
-  .benefits { grid-template-columns: 1fr; }
-}
-/* VAZIO - Formulaire de commande professionnel */
-.order-form {
-  width: 100%;
-  margin-top: 24px;
-  padding: 22px;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  border-radius: 18px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
-}
-
-.order-form .field-label {
-  display: block;
-  margin: 18px 0 9px;
-  color: #171717;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.order-form input,
-.order-form select {
-  display: block;
-  width: 100% !important;
-  min-width: 0;
-  height: 52px;
-  padding: 0 15px;
-  margin: 0;
-  border: 1px solid #dedede;
-  border-radius: 10px;
-  background: #fafafa;
-  color: #171717;
-  font-size: 15px;
-  font-family: inherit;
-  outline: none;
-  box-shadow: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.order-form input:focus,
-.order-form select:focus {
-  border-color: #e6b800;
-  background: #ffffff;
-}
-
-.order-form input::placeholder {
-  color: #999999;
-}
-
-.order-form .order-button {
-  width: 100%;
-  min-height: 54px;
-  margin-top: 25px;
-  padding: 15px;
-  border: none;
-  border-radius: 11px;
-  background: #ffd21f;
-  color: #111111;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.5;
-  box-shadow: 0 5px 12px rgba(255, 210, 31, 0.22);
-  transition: transform 0.2s, background 0.2s;
-}
-
-.order-form .order-button:hover {
-  background: #f0c000;
-  transform: translateY(-1px);
-}
-
-.order-form .order-button:active {
-  transform: scale(0.98);
-}
-
-@media (max-width: 700px) {
-  .order-form {
-    padding: 17px;
-    border-radius: 14px;
-  }
-
-  .order-form input,
-  .order-form select {
-    height: 50px;
-    font-size: 16px;
-  }
-
-  .order-form .order-button {
-    font-size: 14px;
-  }
-}
-
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">VA<span>Z</span>IO</div>
-  <div class="header-text">Votre boutique en ligne<br>Abidjan, Côte d’Ivoire</div>
+  <div class="header-info">Votre boutique en ligne<br>Abidjan, Côte d’Ivoire</div>
 </header>
 
 <section class="hero">
@@ -312,13 +79,13 @@ footer span { color: var(--yellow); }
   <section class="product">
     <div class="gallery">
       <div class="main-photo-wrap" id="photoArea">
-        <img id="mainPhoto" src="./Image%20ChatGPT%2018%20oct.%202026,%2002_06_37.webp"
-             alt="Support de téléphone VAZIO">
-        <button class="arrow prev" id="prevBtn" aria-label="Photo précédente">‹</button>
-        <button class="arrow next" id="nextBtn" aria-label="Photo suivante">›</button>
+        <img id="mainPhoto" alt="Support de téléphone pliable VAZIO">
+        <button class="arrow prev" id="prevBtn" type="button" aria-label="Photo précédente">‹</button>
+        <button class="arrow next" id="nextBtn" type="button" aria-label="Photo suivante">›</button>
         <div class="photo-count" id="photoCount">1 / 3</div>
       </div>
       <div class="thumbnails" id="thumbnails"></div>
+      <p class="form-note" id="photoStatus" aria-live="polite"></p>
     </div>
 
     <div class="details">
@@ -326,155 +93,157 @@ footer span { color: var(--yellow); }
       <h2>Support de téléphone pliable</h2>
       <p class="description">
         Un support compact et pratique pour votre téléphone.
-        Facile à transporter et idéal pour regarder des vidéos,
+        Facile à transporter, idéal pour regarder des vidéos,
         travailler ou passer des appels.
       </p>
-
       <div class="price">1 500 <small>FCFA</small></div>
 
-      <label class="field-label" for="color">Choisissez votre couleur :</label>
-      <select id="color">
-        <option value="Noir">Noir</option>
-        <option value="Rouge">Rouge</option>
-        <option value="Orange">Orange</option>
-        <option value="Blanc">Blanc</option>
-        <option value="Bleu">Bleu</option>
-      </select>
+      <div class="order-form">
+        <label class="field-label" for="color">Choisissez votre couleur :</label>
+        <select id="color" class="color-select">
+          <option value="Noir">Noir</option>
+          <option value="Rouge">Rouge</option>
+          <option value="Orange">Orange</option>
+          <option value="Blanc">Blanc</option>
+          <option value="Bleu">Bleu</option>
+        </select>
 
-     
-<div class="order-form">
-  <label class="field-label" for="customerName">Nom complet :</label>
-  <input id="customerName" type="text" placeholder="Votre nom complet" required>
+        <label class="field-label" for="customerName">Nom complet :</label>
+        <input id="customerName" type="text" autocomplete="name" placeholder="Votre nom complet" required>
 
-  <label class="field-label" for="customerPhone">Téléphone :</label>
-  <input id="customerPhone" type="tel" placeholder="Votre numéro de téléphone" required>
+        <label class="field-label" for="customerPhone">Téléphone :</label>
+        <input id="customerPhone" type="tel" autocomplete="tel" placeholder="Votre numéro de téléphone" required>
 
-  <label class="field-label" for="customerAddress">Adresse :</label>
-  <input id="customerAddress" type="text" placeholder="Ex. : Abatta" required>
+        <label class="field-label" for="customerAddress">Adresse de livraison :</label>
+        <input id="customerAddress" type="text" autocomplete="street-address" placeholder="Ex. : Abatta, repère..." required>
 
-  <label class="field-label" for="payment">Mode de paiement :</label>
-  <select id="payment">
-    <option value="Mobile Money">Mobile Money</option>
-    <option value="Paiement à la livraison">Paiement à la livraison</option>
-  </select>
+        <label class="field-label" for="payment">Mode de paiement :</label>
+        <select id="payment">
+          <option value="Mobile Money">Mobile Money</option>
+          <option value="Paiement à la livraison">Paiement à la livraison</option>
+        </select>
 
-  <button class="order-button" id="orderBtn" type="button">
-    Confirmer ma commande sur WhatsApp
-  </button>
-</div>
-
-
-      <div class="delivery">
-        <div>✓ Commande simple par WhatsApp</div>
-        <div>✓ Paiement à la livraison ou Mobile Money à convenir</div>
-        <div>✓ Contact direct avec VAZIO</div>
+        <button class="order-button" id="orderBtn" type="button">
+          Commander sur WhatsApp
+        </button>
+        <p class="form-note">Vérifiez vos informations avant de confirmer votre commande sur WhatsApp.</p>
       </div>
     </div>
   </section>
 
   <section class="benefits">
-    <div class="benefit">
-      <strong>📱 Pratique</strong>
-      <p>Pour vos vidéos et appels.</p>
-    </div>
-    <div class="benefit">
-      <strong>🎒 Compact</strong>
-      <p>Facile à transporter.</p>
-    </div>
-    <div class="benefit">
-      <strong>💬 Commande facile</strong>
-      <p>Contactez-nous sur WhatsApp.</p>
-    </div>
+    <div class="benefit"><strong>📱 Pratique</strong><p>Pour vos vidéos et appels.</p></div>
+    <div class="benefit"><strong>🎒 Compact</strong><p>Facile à transporter.</p></div>
+    <div class="benefit"><strong>💬 Commande facile</strong><p>Commande directe sur WhatsApp.</p></div>
   </section>
 </main>
 
 <footer>
-  <strong>VA<span>Z</span>IO</strong><br>
-  Votre boutique en ligne à Abidjan<br>
-  © 2026 VAZIO — Tous droits réservés
+  <strong>VA<span>Z</span>IO</strong>
+  <p>Votre boutique en ligne à Abidjan</p>
+  <p>© 2026 VAZIO — Tous droits réservés</p>
 </footer>
 
 <script>
+"use strict";
+
+/* Noms exacts des 3 images présentes dans le dépôt GitHub */
 const productPhotos = [
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_37.webp",
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_44.webp",
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_49.jpg"
 ];
 
-
 let currentPhoto = 0;
 
 const mainPhoto = document.getElementById("mainPhoto");
 const photoCount = document.getElementById("photoCount");
 const thumbnails = document.getElementById("thumbnails");
+const photoStatus = document.getElementById("photoStatus");
 const photoArea = document.getElementById("photoArea");
 
-function showPhoto(index) {
-  currentPhoto = (index + productPhotos.length) % productPhotos.length;
-
-  mainPhoto.src = productPhotos[currentPhoto];
-  photoCount.textContent =
-    (currentPhoto + 1) + " / " + productPhotos.length;
-
-  document.querySelectorAll(".thumb").forEach((thumb, i) => {
-    thumb.classList.toggle("active", i === currentPhoto);
-  });
-}
-
-thumbnails.innerHTML = "";
-
+/* Créer les miniatures une seule fois */
 productPhotos.forEach((src, index) => {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "thumb";
-  button.setAttribute("aria-label", "Photo " + (index + 1));
+  button.setAttribute("aria-label", "Afficher la photo " + (index + 1));
 
   const img = document.createElement("img");
   img.src = src;
-  img.alt = "Photo " + (index + 1);
+  img.alt = "Photo du produit " + (index + 1);
+  img.loading = "lazy";
+
+  img.addEventListener("error", () => {
+    button.title = "Image introuvable : vérifiez le nom du fichier sur GitHub";
+  });
 
   button.appendChild(img);
   button.addEventListener("click", () => showPhoto(index));
   thumbnails.appendChild(button);
 });
 
-document.getElementById("prevBtn").onclick = () => {
+/* Changer la photo principale */
+function showPhoto(index) {
+  currentPhoto = (index + productPhotos.length) % productPhotos.length;
+
+  mainPhoto.onerror = () => {
+    photoStatus.textContent =
+      "Photo introuvable. Vérifiez le nom du fichier dans GitHub.";
+  };
+
+  mainPhoto.onload = () => {
+    photoStatus.textContent = "";
+  };
+
+  mainPhoto.src = productPhotos[currentPhoto];
+  photoCount.textContent =
+    (currentPhoto + 1) + " / " + productPhotos.length;
+
+  document.querySelectorAll(".thumb").forEach((button, i) => {
+    button.classList.toggle("active", i === currentPhoto);
+  });
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
   showPhoto(currentPhoto - 1);
-};
+});
 
-document.getElementById("nextBtn").onclick = () => {
+document.getElementById("nextBtn").addEventListener("click", () => {
   showPhoto(currentPhoto + 1);
-};
+});
 
-let startX = 0;
+/* Navigation par balayage sur téléphone */
+let touchStartX = 0;
+let touchStartY = 0;
 
 photoArea.addEventListener("touchstart", event => {
-  startX = event.changedTouches[0].clientX;
+  touchStartX = event.changedTouches[0].clientX;
+  touchStartY = event.changedTouches[0].clientY;
 }, { passive: true });
 
 photoArea.addEventListener("touchend", event => {
-  const endX = event.changedTouches[0].clientX;
-  const distance = endX - startX;
+  const dx = event.changedTouches[0].clientX - touchStartX;
+  const dy = event.changedTouches[0].clientY - touchStartY;
 
-  if (Math.abs(distance) > 40) {
-    showPhoto(currentPhoto + (distance < 0 ? 1 : -1));
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+    showPhoto(currentPhoto + (dx < 0 ? 1 : -1));
   }
 }, { passive: true });
 
+/* Afficher la première image */
 showPhoto(0);
 
-
-// Commande WhatsApp
-
+/* Préparer la commande WhatsApp */
 document.getElementById("orderBtn").addEventListener("click", () => {
   const name = document.getElementById("customerName").value.trim();
   const phone = document.getElementById("customerPhone").value.trim();
   const address = document.getElementById("customerAddress").value.trim();
-  const payment = document.getElementById("payment").value;
   const color = document.getElementById("color").value;
+  const payment = document.getElementById("payment").value;
 
   if (!name || !phone || !address) {
-    alert("Veuillez remplir votre nom, téléphone et adresse.");
+    alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
     return;
   }
 
@@ -493,11 +262,8 @@ document.getElementById("orderBtn").addEventListener("click", () => {
     "https://wa.me/2250777848470?text=" +
     encodeURIComponent(message);
 
-  window.open(whatsappURL, "_blank");
-});
-
+  window.location.href = whatsappURL;
 });
 </script>
 </body>
 </html>
-
