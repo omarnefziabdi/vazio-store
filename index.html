@@ -401,66 +401,68 @@ const productPhotos = [
   "./Image%20ChatGPT%2018%20oct.%202026,%2002_06_49.jpg"
 ];
 
+
 let currentPhoto = 0;
 
 const mainPhoto = document.getElementById("mainPhoto");
 const photoCount = document.getElementById("photoCount");
 const thumbnails = document.getElementById("thumbnails");
+const photoArea = document.getElementById("photoArea");
 
 function showPhoto(index) {
   currentPhoto = (index + productPhotos.length) % productPhotos.length;
+
   mainPhoto.src = productPhotos[currentPhoto];
-  photoCount.textContent = `${currentPhoto + 1} / ${productPhotos.length}`;
+  photoCount.textContent =
+    (currentPhoto + 1) + " / " + productPhotos.length;
 
   document.querySelectorAll(".thumb").forEach((thumb, i) => {
     thumb.classList.toggle("active", i === currentPhoto);
   });
 }
 
+thumbnails.innerHTML = "";
+
 productPhotos.forEach((src, index) => {
   const button = document.createElement("button");
-  button.className = "thumb" + (index === 0 ? " active" : "");
   button.type = "button";
-  button.setAttribute("aria-label", `Afficher la photo ${index + 1}`);
+  button.className = "thumb";
+  button.setAttribute("aria-label", "Photo " + (index + 1));
 
   const img = document.createElement("img");
   img.src = src;
-  img.alt = `Support de téléphone - photo ${index + 1}`;
-  img.loading = "lazy";
+  img.alt = "Photo " + (index + 1);
 
   button.appendChild(img);
   button.addEventListener("click", () => showPhoto(index));
   thumbnails.appendChild(button);
 });
 
-document.getElementById("prevBtn").addEventListener("click", () => {
+document.getElementById("prevBtn").onclick = () => {
   showPhoto(currentPhoto - 1);
-});
-document.getElementById("nextBtn").addEventListener("click", () => {
-  showPhoto(currentPhoto + 1);
-});
+};
 
-// Navigation par balayage sur écran tactile
-let touchStartX = 0;
-const photoArea = document.getElementById("photoArea");
+document.getElementById("nextBtn").onclick = () => {
+  showPhoto(currentPhoto + 1);
+};
+
+let startX = 0;
 
 photoArea.addEventListener("touchstart", event => {
-  touchStartX = event.changedTouches[0].screenX;
+  startX = event.changedTouches[0].clientX;
 }, { passive: true });
 
 photoArea.addEventListener("touchend", event => {
-  const touchEndX = event.changedTouches[0].screenX;
-  const distance = touchEndX - touchStartX;
+  const endX = event.changedTouches[0].clientX;
+  const distance = endX - startX;
 
-  if (Math.abs(distance) > 45) {
+  if (Math.abs(distance) > 40) {
     showPhoto(currentPhoto + (distance < 0 ? 1 : -1));
   }
 }, { passive: true });
 
-// Vérification des images
-mainPhoto.addEventListener("error", () => {
-  mainPhoto.alt = "Image introuvable : vérifiez le nom du fichier dans GitHub.";
-});
+showPhoto(0);
+
 
 // Commande WhatsApp
 
