@@ -204,6 +204,96 @@ footer span { color: var(--yellow); }
   .details h2 { font-size: 25px; }
   .benefits { grid-template-columns: 1fr; }
 }
+/* VAZIO - Formulaire de commande professionnel */
+.order-form {
+  width: 100%;
+  margin-top: 24px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+}
+
+.order-form .field-label {
+  display: block;
+  margin: 18px 0 9px;
+  color: #171717;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.order-form input,
+.order-form select {
+  display: block;
+  width: 100% !important;
+  min-width: 0;
+  height: 52px;
+  padding: 0 15px;
+  margin: 0;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #171717;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.order-form input:focus,
+.order-form select:focus {
+  border-color: #e6b800;
+  background: #ffffff;
+}
+
+.order-form input::placeholder {
+  color: #999999;
+}
+
+.order-form .order-button {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 11px;
+  background: #ffd21f;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  box-shadow: 0 5px 12px rgba(255, 210, 31, 0.22);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.order-form .order-button:hover {
+  background: #f0c000;
+  transform: translateY(-1px);
+}
+
+.order-form .order-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 700px) {
+  .order-form {
+    padding: 17px;
+    border-radius: 14px;
+  }
+
+  .order-form input,
+  .order-form select {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .order-form .order-button {
+    font-size: 14px;
+  }
+}
+
 </style>
 </head>
 <body>
