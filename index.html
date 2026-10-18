@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAZIO | Boutique en ligne</title>
+<meta name="description" content="VAZIO, votre boutique en ligne à Abidjan. Commandez facilement sur WhatsApp.">
+<style>
+:root{--yellow:#ffd32a;--black:#171717;--gray:#f5f5f5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:var(--black);background:#fff}
+header{background:var(--black);color:white;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-size:30px;font-weight:900;letter-spacing:3px;color:var(--yellow)}
+header a{color:white;text-decoration:none}
+.hero{padding:55px 6%;background:linear-gradient(120deg,#fff4bd,#fff);text-align:center}
+.hero h1{font-size:clamp(30px,5vw,52px);margin:0 0 14px}
+.hero p{font-size:17px;color:#555}
+.button{display:inline-block;border:0;border-radius:9px;background:var(--yellow);color:#171717;padding:14px 20px;font-weight:bold;text-decoration:none;cursor:pointer}
+main{max-width:1100px;margin:auto;padding:35px 18px}
+.section-title{font-size:27px;margin-bottom:20px}
+.product{display:grid;grid-template-columns:1fr 1fr;gap:28px;border:1px solid #eee;border-radius:16px;padding:20px}
+.gallery{min-width:0}
+.photo{height:330px;background:linear-gradient(145deg,#eee,#fafafa);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:contain}
+.photo .placeholder{font-size:70px}
+.thumbnails{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
+.thumb{width:65px;height:60px;flex-shrink:0;border:2px solid #ddd;border-radius:8px;overflow:hidden;cursor:pointer;background:#f4f4f4;display:flex;align-items:center;justify-content:center}
+.thumb.active{border-color:#e0b600}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.details h2{margin-top:5px;font-size:28px}
+.price{font-size:27px;font-weight:bold;margin:15px 0}
+.muted{color:#666;line-height:1.6}
+label{display:block;font-weight:bold;margin:18px 0 8px}
+select,input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:16px;background:white}
+.order{width:100%;margin-top:18px;background:#20bd5a;color:white;font-size:16px}
+.notice{margin-top:15px;background:#f7f7f7;padding:14px;border-radius:10px;font-size:14px;line-height:1.6}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px}
+.feature{padding:20px 12px;text-align:center;background:var(--gray);border-radius:12px}
+footer{margin-top:35px;background:var(--black);color:#ddd;text-align:center;padding:28px 15px;line-height:1.8}
+@media(max-width:650px){
+ .product{grid-template-columns:1fr;padding:13px}
+ .photo{height:280px}
+ .features{grid-template-columns:1fr}
+ header{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">VAZIO</div>
+  <div>Votre boutique en ligne à Abidjan</div>
+  <a href="#produit">Nos produits</a>
+</header>
+
+<section class="hero">
+  <h1>Bienvenue chez VAZIO</h1>
+  <p>Des produits pratiques au meilleur prix.</p>
+  <a class="button" href="#produit">Découvrir le produit</a>
+</section>
+
+<main id="produit">
+  <h2 class="section-title">Notre produit</h2>
+
+  <section class="product">
+    <div class="gallery">
+      <div class="photo" id="mainPhoto">
+        <div class="placeholder">📱</div>
+      </div>
+      <div class="thumbnails" id="thumbnails"></div>
+      <p class="muted" style="font-size:13px">Ajoutez vos photos du produit dans le code pour les afficher ici.</p>
+    </div>
+
+    <div class="details">
+      <h2>Support téléphone pliable</h2>
+      <p class="muted">Un support compact et pratique, imprimé en 3D. Facile à transporter et idéal pour regarder des vidéos ou utiliser votre téléphone.</p>
+      <div class="price">1 500 FCFA</div>
+
+      <label for="color">Choisissez votre couleur</label>
+      <select id="color">
+        <option>Noir</option>
+        <option>Rouge</option>
+        <option>Orange</option>
+        <option>Blanc</option>
+        <option>Bleu</option>
+      </select>
+
+      <label for="customer">Votre nom</label>
+      <input id="customer" placeholder="Entrez votre nom" autocomplete="name">
+
+      <label for="phone">Votre numéro de téléphone</label>
+      <input id="phone" type="tel" placeholder="Ex. 07 00 00 00 00" autocomplete="tel">
+
+      <label for="address">Adresse de livraison à Abidjan</label>
+      <input id="address" placeholder="Commune, quartier, repère">
+
+      <label for="payment">Mode de paiement</label>
+      <select id="payment">
+        <option> Paiement à la livraison (COD)</option>
+        <option>Mobile Money</option>
+      </select>
+
+      <button class="button order" onclick="orderWhatsApp()">Commander sur WhatsApp</button>
+
+      <div class="notice">
+        ✓ Commande simple sur WhatsApp<br>
+        ✓ Paiement à la livraison ou Mobile Money<br>
+        ✓ Confirmation de la commande avant livraison
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">🚚<br><strong>Livraison</strong><br>À Abidjan</div>
+    <div class="feature">💳<br><strong>Paiement flexible</strong><br>COD ou Mobile Money</div>
+    <div class="feature">💬<br><strong>Commande facile</strong><br>Directement sur WhatsApp</div>
+  </section>
+</main>
+
+<footer>
+  <div class="logo">VAZIO</div>
+  Votre boutique en ligne à Abidjan.<br>
+  © <span id="year"></span> VAZIO — Tous droits réservés.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/*
+  Pour ajouter vos photos :
+  1. Téléversez les images dans le dépôt GitHub.
+  2. Remplacez les exemples ci-dessous par les chemins exacts,
+     par exemple "images/produit-1.jpg".
+*/
+const productPhotos = [
+  // "images/produit-1.jpg",
+  // "images/produit-2.jpg",
+  // "images/produit-3.jpg"
+];
+
+const mainPhoto = document.getElementById("mainPhoto");
+const thumbnails = document.getElementById("thumbnails");
+
+function showPhoto(index) {
+  const path = productPhotos[index];
+  if (!path) return;
+  mainPhoto.innerHTML = "";
+  const img = document.createElement("img");
+  img.src = path;
+  img.alt = "Support téléphone pliable VAZIO";
+  img.onerror = () => {
+    mainPhoto.innerHTML = '<div class="placeholder">📱</div>';
+  };
+  mainPhoto.appendChild(img);
+
+  [...thumbnails.children].forEach((button, i) => {
+    button.classList.toggle("active", i === index);
+  });
+}
+
+productPhotos.forEach((path, index) => {
+  const button = document.createElement("button");
+  button.className = "thumb" + (index === 0 ? " active" : "");
+  button.type = "button";
+  button.setAttribute("aria-label", "Voir la photo " + (index + 1));
+  const img = document.createElement("img");
+  img.src = path;
+  img.alt = "Photo " + (index + 1);
+  button.appendChild(img);
+  button.onclick = () => showPhoto(index);
+  thumbnails.appendChild(button);
+});
+
+if (productPhotos.length > 0) {
+  showPhoto(0);
+}
+
+function orderWhatsApp() {
+  const name = document.getElementById("customer").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const color = document.getElementById("color").value;
+  const payment = document.getElementById("payment").value;
+
+  if (!name || !phone || !address) {
+    alert("Veuillez remplir votre nom, votre téléphone et votre adresse.");
+    return;
+  }
+
+  const message =
+    "Bonjour VAZIO ! Je souhaite commander :\n\n" +
+    "Produit : Support téléphone pliable\n" +
+    "Prix : 1 500 FCFA\n" +
+    "Couleur : " + color + "\n" +
+    "Nom : " + name + "\n" +
+    "Téléphone : " + phone + "\n" +
+    "Adresse : " + address + "\n" +
+    "Paiement : " + payment + "\n\n" +
+    "Merci de confirmer ma commande.";
+
+  const whatsappNumber = "2250777848470";
+  const url = "https://wa.me/" + whatsappNumber + "?text=" +
+    encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
